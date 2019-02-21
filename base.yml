@@ -1,0 +1,29 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    networks:
+      - default
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d/
+      - ./nginx/log/:/var/log/nginx/
+    restart: always
+  nginxui:
+    image: portainer/portainer:latest
+    container_name: portainer
+    networks:
+      - default
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./docker/portainer/data:/data
+    restart: always
+networks:
+  default:
+    external:
+      name: base
