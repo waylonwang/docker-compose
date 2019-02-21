@@ -1,0 +1,37 @@
+ersion: '2'
+
+services:
+  db:
+    image: mariadb:latest
+    container_name: mysql
+    volumes:
+      - ./mysql/mariadb10/data:/var/lib/mysql
+      - ./mysql/mariadb10/data:/var/log/mysql
+      - ./mysql/mariadb10/conf:/etc/mysql/conf.d
+    networks:
+      - default
+    environment:
+      - MYSQL_ROOT_PASSWORD=[password]
+    restart: always
+  web:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    networks:
+      - default
+    ports:
+      - "43580:80"
+    volumes:
+      - ./phpmyadmin/theme:/www/themes/mytheme
+    restart: always
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - PMA_VERBOSE=db
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=[password]
+
+networks:
+  default:
+    external:
+      name: pub_db
