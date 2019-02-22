@@ -30,6 +30,7 @@ services:
     ports:
       - "500:500/udp"
       - "4500:4500/udp"
+      - "1701:1701"
     volumes:
       - ./l2tp/modules:/lib/modules
     env_file:
