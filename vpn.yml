@@ -21,6 +21,17 @@ services:
       - "7706:7706"
     volumes:
       - ./shadowsocks-r/conf:/etc/shadowsocks-r
+  l2tp:
+    image: teddysun/l2tp:alpine 
+    container_name: l2tp
+    networks:
+      - pub_vpn
+    restart: always
+    ports:
+      - "500:500/udp"
+      - "4500:4500/udp"
+    volumes:
+      - ./l2tp/conf:/lib/modules
       
 networks:
   pub_vpn:
