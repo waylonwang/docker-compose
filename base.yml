@@ -12,6 +12,7 @@ services:
       - ./nginx/conf:/etc/nginx/conf.d/
       - ./nginx/log/:/var/log/nginx/
     restart: always
+    privileged: true
   nginxui:
     image: portainer/portainer:latest
     container_name: portainer
@@ -23,6 +24,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./docker/portainer/data:/data
     restart: always
+    privileged: true
 networks:
   default:
     external:
