@@ -30,7 +30,7 @@ services:
     ports:
       - "7704:443"
     volumes:
-      - ./ocserv/data/ocpasswd:/etc/ocserv/ocpasswd
+      - ./ocserv/data:/etc/ocserv
     env_file:
       - ./ocserv/conf/ocserv.env
     privileged: true
