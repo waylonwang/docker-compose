@@ -31,7 +31,9 @@ services:
       - "500:500/udp"
       - "4500:4500/udp"
     volumes:
-      - ./l2tp/conf:/lib/modules
+      - ./l2tp/modules:/lib/modules
+    env_file:
+      - ./l2tp/conf/l2tp.env
     privileged: true
       
 networks:
