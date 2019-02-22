@@ -31,6 +31,8 @@ services:
       - "7704:443"
     volumes:
       - ./ocserv/data/ocpasswd:/etc/ocserv/ocpasswd
+    env_file:
+      - ./ocserv/conf/ocserv.env
     privileged: true
   l2tp:
     image: teddysun/l2tp:alpine 
