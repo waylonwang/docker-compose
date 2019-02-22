@@ -28,7 +28,9 @@ services:
       - pub_vpn
     restart: always
     ports:
-      - "443:443"
+      - "7704:443"
+    volumes:
+      - ./ocserv/data/ocpasswd:/etc/ocserv/ocpasswd
     privileged: true
   l2tp:
     image: teddysun/l2tp:alpine 
