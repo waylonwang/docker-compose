@@ -21,6 +21,15 @@ services:
       - "7706:7706"
     volumes:
       - ./shadowsocks-r/conf:/etc/shadowsocks-r
+  ocserv:
+    image: tommylau/ocserv 
+    container_name: ocserv
+    networks:
+      - pub_vpn
+    restart: always
+    ports:
+      - "443:443"
+    privileged: true
   l2tp:
     image: teddysun/l2tp:alpine 
     container_name: l2tp
