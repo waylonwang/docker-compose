@@ -1,0 +1,28 @@
+version: "2.0"
+
+services:
+  ss:
+    image: teddysun/shadowsocks-libev:alpine
+    container_name: shadowsocks
+    networks:
+      - pub_vpn
+    restart: always
+    ports:
+      - "7703:7703"
+    volumes:
+      - ./docker/shadowsocks:/etc/shadowsocks-libev
+  ssr:
+    image: teddysun/shadowsocks-r:alpine 
+    container_name: shadowsocks-r
+    networks:
+      - pub_vpn
+    restart: always
+    ports:
+      - "7706:7706"
+    volumes:
+      - ./docker/shadowsocks-r:/etc/shadowsocks-r
+      
+networks:
+  pub_vpn:
+    external:
+      name: pub_vpn
