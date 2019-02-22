@@ -10,7 +10,7 @@ services:
     ports:
       - "7703:7703"
     volumes:
-      - ./docker/shadowsocks:/etc/shadowsocks-libev
+      - ./shadowsocks/conf:/etc/shadowsocks-libev
   ssr:
     image: teddysun/shadowsocks-r:alpine 
     container_name: shadowsocks-r
@@ -20,7 +20,7 @@ services:
     ports:
       - "7706:7706"
     volumes:
-      - ./docker/shadowsocks-r:/etc/shadowsocks-r
+      - ./shadowsocks-r/conf:/etc/shadowsocks-r
       
 networks:
   pub_vpn:
