@@ -29,8 +29,8 @@ services:
     restart: always
     ports:
       - "7704:443"
-    volumes:
-      - ./ocserv/data:/etc/ocserv
+#    volumes:
+#      - ./ocserv/data:/etc/ocserv
     env_file:
       - ./ocserv/conf/ocserv.env
     privileged: true
