@@ -11,6 +11,7 @@ services:
       - "7703:7703"
     volumes:
       - ./shadowsocks/conf:/etc/shadowsocks-libev
+    privileged: true
   ssr:
     image: teddysun/shadowsocks-r:alpine 
     container_name: shadowsocks-r
@@ -21,6 +22,7 @@ services:
       - "7706:7706"
     volumes:
       - ./shadowsocks-r/conf:/etc/shadowsocks-r
+    privileged: true
   ocserv:
     image: tommylau/ocserv 
     container_name: ocserv
