@@ -13,6 +13,7 @@ services:
     env_file:
       - ./mysql/mariadb10/conf/mysql.env
     restart: always
+    privileged: true
   web:
     image: phpmyadmin/phpmyadmin:latest
     container_name: phpmyadmin
@@ -25,6 +26,7 @@ services:
     restart: always
     env_file:
       - ./phpmyadmin/conf/phpmyadmin.env
+    privileged: true
 
 networks:
   default:
