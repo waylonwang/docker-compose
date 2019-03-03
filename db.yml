@@ -10,6 +10,8 @@ services:
       - ./mysql/mariadb10/conf:/etc/mysql/conf.d
     networks:
       - default
+    ports:
+      - "3306:3306"
     env_file:
       - ./mysql/mariadb10/conf/mysql.env
     restart: always
