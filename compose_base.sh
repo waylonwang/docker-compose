@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 source <(curl -s https://raw.githubusercontent.com/waylonwang/sh-scripts/master/lib/check_docker_env.sh)
 
