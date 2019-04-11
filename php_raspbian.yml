@@ -5,6 +5,8 @@ services:
     container_name: php
     networks:
       - default
+    ports:
+      - 9100:9000
     volumes:
       - ./php/www:/www
     restart: always
