@@ -28,7 +28,7 @@ services:
     restart: always
     privileged: true
   php:
-    image: arm32v7/php
+    image: yrzr/php-fpm-arm32v7
     container_name: php
     networks:
       - default
