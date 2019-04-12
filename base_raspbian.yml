@@ -15,7 +15,7 @@ services:
     restart: always
     privileged: true
   dockerui:
-    image: portainer/portainer:arm
+    image: portainer/portainer:linux-arm-1.20.2
     container_name: portainer
     networks:
       - default
