@@ -11,6 +11,7 @@ services:
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d/
       - ./nginx/log/:/var/log/nginx/
+      - ./www:/var/www/html/
     restart: always
     privileged: true
   dockerui:
@@ -19,12 +20,51 @@ services:
     networks:
       - default
     ports:
-      - "9000:9000"
+      - "900:9000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./portainer/data:/data
     command: -H unix:///var/run/docker.sock
     restart: always
+    privileged: true
+  php:
+    image: arm32v7/php
+    container_name: php
+    networks:
+      - default
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./www:/var/www/html
+    restart: always
+    privileged: true
+  mysql:
+    image: jsurf/rpi-mariadb
+    container_name: mysql
+    volumes:
+      - ./mysql/mariadb10/data:/var/lib/mysql
+      - ./mysql/mariadb10/data:/var/log/mysql
+      - ./mysql/mariadb10/conf:/etc/mysql/conf.d
+    networks:
+      - default
+    ports:
+      - "3306:3306"
+    env_file:
+      - ./mysql/mariadb10/conf/mysql.env
+    restart: always
+    privileged: true
+  web:
+    image: ebspace/armhf-phpmyadmin
+    container_name: phpmyadmin
+    networks:
+      - default
+    ports:
+      - "800:80"
+    volumes:
+      - ./phpmyadmin/theme:/www/themes/mytheme
+    restart: always
+    env_file:
+      - ./phpmyadmin/conf/phpmyadmin.env
     privileged: true
 networks:
   default:
