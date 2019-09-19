@@ -3,7 +3,7 @@ services:
   nginx:
     image: nginx:alpine
     container_name: nginx
-    network: host
+    network_mode: "host"
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d/
       - ./nginx/log/:/var/log/nginx/
