@@ -3,11 +3,7 @@ services:
   nginx:
     image: nginx:alpine
     container_name: nginx
-    networks:
-      - default
-    ports:
-      - "80:80"
-      - "443:443"
+    network: host
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d/
       - ./nginx/log/:/var/log/nginx/
