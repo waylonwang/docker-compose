@@ -1,6 +1,8 @@
 #! /bin/bash
-
-source <(curl -s https://raw.githubusercontent.com/waylonwang/sh-scripts/master/lib/check_docker_env.sh)
+# 如环境变量GIT_RAW_SH未设置则默认设为github地址
+[ -z ${GIT_RAW_SH} ] && GIT_RAW_SH="https://raw.githubusercontent.com/waylonwang/sh-scripts/master"
+# 变量GIT_RAW_SH设置完成
+source <(curl -s ${GIT_RAW_SH}/lib/check_docker_env.sh)
 
 docker network inspect base > /dev/null 2>&1 || docker network create --driver bridge base
 
