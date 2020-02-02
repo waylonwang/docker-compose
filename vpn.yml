@@ -2,7 +2,7 @@ version: "2.0"
 
 services:
   ss:
-    image: teddysun/shadowsocks-libev
+    image: teddysun/shadowsocks-libe:v3.3.2-alpine
     container_name: shadowsocks
     networks:
       - pub_vpn
