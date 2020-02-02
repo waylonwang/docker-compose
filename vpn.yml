@@ -2,7 +2,7 @@ version: "2.0"
 
 services:
   ss:
-    image: teddysun/shadowsocks-libev:alpine
+    image: teddysun/shadowsocks-libev
     container_name: shadowsocks
     networks:
       - pub_vpn
@@ -13,7 +13,7 @@ services:
       - ./shadowsocks/conf:/etc/shadowsocks-libev
     privileged: true
   ssr:
-    image: teddysun/shadowsocks-r:alpine 
+    image: teddysun/shadowsocks-r
     container_name: shadowsocks-r
     networks:
       - pub_vpn
